@@ -1,0 +1,186 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 项目结构总览
+
+该项目以 **前后端分离架构 + LangGraph 增强多智能体系统** 为核心，实现了现代化的天然气碳同位素数据解释智能体系统。整体代码位于 `app/` 目录，支持传统Gradio模式和现代React前端两种部署方式。
+
+## 架构设计
+
+### 🏗️ 分层架构
+- **前端层**：React (Next.js) + Gradio 双模式支持
+- **API层**：RESTful API + WebSocket 实时通信
+- **业务层**：LangGraph 多智能体协作 + 任务装饰器系统
+- **数据层**：PostgreSQL + MySQL + Elasticsearch + Redis + MinIO
+
+### 🔄 核心工作流
+```
+用户请求 → MetaSupervisor → TaskPlanner → 动态子图生成 → RuntimeSupervisor → Critic审查 → 结果返回
+```
+
+## 顶级入口
+
+| 文件 | 说明 | 模式 |
+|------|------|------|
+| **run_ui.py** | Gradio传统界面启动 | 传统模式 |
+| **app/ui/petro_agent/** | Next.js现代前端 | 现代模式 |
+
+## 业务核心（app/）
+
+| 目录 | 说明 | 关键特性 |
+|------|------|----------|
+| **app/core** | 系统内核与架构基础 | 增强图构建、记忆层、任务装饰器、多数据库支持 |
+| **app/agents** | 智能体实现 | 支持传统Agent和CustomReactAgent两种模式 |
+| **app/ui** | 前端界面层 | Gradio + React双前端支持、流式输出 |
+| **app/tools** | 工具生态系统 | @task装饰器、工具注册表、异步执行 |
+| **app/prompts** | 提示词管理 | 模块化提示词系统 |
+| **app/data** | 数据管理 | 文件、任务、知识库、临时数据 |
+| **app/utils** | 工具函数 | 共享工具类和辅助函数 |
+
+### 🔧 app/core 核心模块
+
+#### 架构与状态管理
+- **[app/core/engine.py](mdc:app/core/engine.py)** – 系统引擎，会话管理，支持增强图模式
+- **[app/core/state.py](mdc:app/core/state.py)** – 状态定义与管理器，支持 LangGraph 状态模式
+- **[app/core/graph_builder.py](mdc:app/core/graph_builder.py)** – 传统图构建器
+- **[app/core/enhanced_graph_builder.py](mdc:app/core/enhanced_graph_builder.py)** – 增强图构建器，支持MetaSupervisor架构
+
+#### 配置与管理
+- **[app/core/config.py](mdc:app/core/config.py)** – 统一配置管理，支持多环境配置
+- **[app/core/file_manager.py](mdc:app/core/file_manager.py)** – 文件管理与索引系统
+- **[app/core/info_hub.py](mdc:app/core/info_hub.py)** – 信息中枢，多存储后端整合
+
+#### 记忆与持久化
+- **[app/core/memory/](mdc:app/core/memory)** – 记忆层子系统
+  - **[store.py](mdc:app/core/memory/store.py)** – 基础记忆存储
+  - **[langgraph_store.py](mdc:app/core/memory/langgraph_store.py)** – LangGraph集成记忆存储
+  - **[memory_integration.py](mdc:app/core/memory/memory_integration.py)** – 记忆整合层
+  - **[engine_adapter.py](mdc:app/core/memory/engine_adapter.py)** – 引擎记忆适配器
+  - **[history_manager.py](mdc:app/core/memory/history_manager.py)** – 历史记录管理
+
+#### 检查点与审查
+- **[app/core/postgres_checkpoint.py](mdc:app/core/postgres_checkpoint.py)** – PostgreSQL检查点管理
+- **[app/core/mysql_checkpoint.py](mdc:app/core/mysql_checkpoint.py)** – MySQL检查点管理
+- **[app/core/critic_node.py](mdc:app/core/critic_node.py)** – Critic审查节点实现
+
+#### 可视化与任务
+- **[app/core/dag_visualizer.py](mdc:app/core/dag_visualizer.py)** – DAG工作流可视化
+- **[app/core/task_decorator.py](mdc:app/core/task_decorator.py)** – @task装饰器系统
+
+### 🤖 app/agents 智能体系统
+
+#### 基础架构
+- **[app/agents/base_agent.py](mdc:app/agents/base_agent.py)** – 智能体基类，定义核心接口
+- **[app/agents/custom_react_agent.py](mdc:app/agents/custom_react_agent.py)** – 自定义ReAct智能体，现代化实现
+
+#### 专业智能体
+- **[app/agents/main_agent.py](mdc:app/agents/main_agent.py)** – 主智能体（监督者）
+- **[app/agents/data_agent.py](mdc:app/agents/data_agent.py)** – 数据处理智能体
+- **[app/agents/expert_agent.py](mdc:app/agents/expert_agent.py)** – 专家分析智能体
+
+#### ReAct实现
+- **[app/agents/react_agent/](mdc:app/agents/react_agent)** – 传统ReAct智能体实现
+
+### 🖥️ app/ui 前端界面层
+
+#### 传统Gradio界面
+- **[app/ui/gradio_app.py](mdc:app/ui/gradio_app.py)** – Gradio主界面
+- **[app/ui/gradio_ui_memory_manager.py](mdc:app/ui/gradio_ui_memory_manager.py)** – 记忆管理界面
+
+#### 现代React前端
+- **[app/ui/petro_agent/](mdc:app/ui/petro_agent)** – Next.js现代前端应用
+  - **[app/page.tsx](mdc:app/ui/petro_agent/app/page.tsx)** – 主页面组件
+  - **[components/](mdc:app/ui/petro_agent/components)** – React组件库
+  - **[lib/](mdc:app/ui/petro_agent/lib)** – 工具库和API客户端
+
+#### 流式处理
+- **[app/ui/streaming.py](mdc:app/ui/streaming.py)** – LangGraph流式输出处理
+- **[app/ui/streaming_adapter.py](mdc:app/ui/streaming_adapter.py)** – 流式输出适配器
+- **[app/ui/message_processor.py](mdc:app/ui/message_processor.py)** – 消息处理器
+
+### 🛠️ app/tools 工具生态
+
+- **[app/tools/registry.py](mdc:app/tools/registry.py)** – 工具注册表，支持@task装饰器
+- **工具分类目录**：按功能分类的工具实现，通过registry统一管理
+
+## 🗂️ 数据与配置
+
+### 配置管理
+- **[config/](mdc:config)** – 配置文件目录
+- **[.env](mdc:.env)** – 环境变量配置
+
+### 数据存储
+- **[data/](mdc:data)** – 数据根目录
+  - **files/** – 用户上传文件
+  - **generated/** – 系统生成文件
+  - **knowledge/** – 知识库文件
+  - **tasks/** – 任务相关数据
+  - **uploads/** – 临时上传文件
+
+### 记忆存储
+- **[memories/](mdc:memories)** – 基于用户ID的记忆存储目录
+
+### 检查点
+- **[checkpoints/](mdc:checkpoints)** – LangGraph检查点存储
+
+## 🧪 测试与验证
+
+| 测试文件 | 功能 | 状态 |
+|----------|------|------|
+| **[test_stage1_enhanced_graph.py](mdc:test_stage1_enhanced_graph.py)** | 增强图构建测试 | ✅ 通过 |
+| **[test_stage2_task_checkpoint.py](mdc:test_stage2_task_checkpoint.py)** | 任务装饰器与检查点测试 | ✅ 通过 |
+| **[test_stage3_memory_upgrade.py](mdc:test_stage3_memory_upgrade.py)** | 记忆层升级测试 | ✅ 通过 |
+| **[test_random_interrupt_recovery.py](mdc:test_random_interrupt_recovery.py)** | 随机中断恢复测试 | ✅ 通过 |
+| **[test_8_concurrent_pressure.py](mdc:test_8_concurrent_pressure.py)** | 并发压力测试 | 📋 测试中 |
+
+## 🚀 部署与启动
+
+### 传统模式（Gradio）
+```bash
+conda activate sweet
+python run_ui.py
+```
+
+### 现代模式（React前端）
+```bash
+# 后端API
+conda activate sweet
+python -m app.api.main  # 待实现
+
+# 前端界面
+cd app/ui/petro_agent
+npm run dev
+```
+
+## 📚 核心设计模式
+
+### 1. MetaSupervisor架构
+- **MetaSupervisor**：身份校验、异常兜底
+- **TaskPlanner**：用户需求拆解为DAG子图
+- **RuntimeSupervisor**：监控子图运行、限流、超时重试
+- **Critic**：质量与安全审查
+
+### 2. @task装饰器系统
+- 统一工具封装：`@task(deterministic=True)`
+- 异步任务支持：`is_background=True`
+- 自动重试机制：configurable retry policy
+
+### 3. 分层记忆系统
+- **Short-Term**：最近K条消息，LangGraph reducer
+- **Episodic**：会话级黑板共享状态
+- **Long-Term**：FAISS + Elasticsearch，命名空间隔离
+
+### 4. 多模态流式输出
+- **Messages流**：LLM文本输出
+- **Custom流**：工具执行、图片、文件
+- **Events流**：系统事件和状态更新
+
+---
+
+> **开发建议**：
+> - 新功能优先使用增强图构建器 (`EnhancedGraphBuilder`)
+> - 工具开发使用 `@task` 装饰器标准
+> - 前端开发推荐使用 React 现代前端
+> - 运行代码时请在 `sweet` 虚拟环境中执行

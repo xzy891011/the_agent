@@ -1,0 +1,27 @@
+{
+  "records": {
+    "666611a5-2f5e-4bc4-b0cc-877111ee96b6": "/xuzhiyao/code/the_agent/data/knowledge/process/666611a5-2f5e-4bc4-b0cc-877111ee96b6.json",
+    "170a88f2-7349-4a49-9173-d0500173f5fc": "/xuzhiyao/code/the_agent/data/knowledge/process/170a88f2-7349-4a49-9173-d0500173f5fc.json"
+  },
+  "sessions": {
+    "test-session-20250429160310": [
+      "666611a5-2f5e-4bc4-b0cc-877111ee96b6"
+    ],
+    "test-session-20250429160855": [
+      "170a88f2-7349-4a49-9173-d0500173f5fc"
+    ]
+  },
+  "agents": {
+    "测试智能体": [
+      "666611a5-2f5e-4bc4-b0cc-877111ee96b6",
+      "170a88f2-7349-4a49-9173-d0500173f5fc"
+    ]
+  },
+  "types": {
+    "process": [
+      "666611a5-2f5e-4bc4-b0cc-877111ee96b6",
+      "170a88f2-7349-4a49-9173-d0500173f5fc"
+    ]
+  },
+  "updated_at": "2025-04-29T16:08:59.273135"
+}

@@ -1,0 +1,108 @@
+{
+  "u-3aa472e0": {
+    "file_id": "u-3aa472e0",
+    "file_name": "move_test_20250702_231030.txt",
+    "file_path": "/xuzhiyao/code/the_agent/data/uploads/u-3aa472e0_move_test_20250702_231030.txt",
+    "original_path": "/xuzhiyao/code/the_agent/data/generated/move_test_20250702_231030.txt",
+    "file_type": "text",
+    "content_type": "text/plain",
+    "size": 78,
+    "upload_time": "2025-07-02T23:10:30.167413",
+    "source": "upload",
+    "session_id": "2e84fe64-8acb-4b6e-ad73-9341d98c71ed",
+    "metadata": {
+      "content_type": "text/plain",
+      "size": 78,
+      "id_format": "简短ID格式: u-上传文件, g-生成文件, t-临时文件"
+    }
+  },
+  "u-75f59ddf": {
+    "file_id": "u-75f59ddf",
+    "file_name": "move_test_20250702_231109.txt",
+    "file_path": "/xuzhiyao/code/the_agent/data/uploads/u-75f59ddf_move_test_20250702_231109.txt",
+    "original_path": "/xuzhiyao/code/the_agent/data/generated/move_test_20250702_231109.txt",
+    "file_type": "text",
+    "content_type": "text/plain",
+    "size": 78,
+    "upload_time": "2025-07-02T23:11:09.359757",
+    "source": "upload",
+    "session_id": "2e84fe64-8acb-4b6e-ad73-9341d98c71ed",
+    "metadata": {
+      "content_type": "text/plain",
+      "size": 78,
+      "id_format": "简短ID格式: u-上传文件, g-生成文件, t-临时文件"
+    }
+  },
+  "u-c4246591": {
+    "file_id": "u-c4246591",
+    "file_name": "move_test_20250702_231131.txt",
+    "file_path": "/xuzhiyao/code/the_agent/data/uploads/u-c4246591_move_test_20250702_231131.txt",
+    "original_path": "/xuzhiyao/code/the_agent/data/generated/move_test_20250702_231131.txt",
+    "file_type": "text",
+    "content_type": "text/plain",
+    "size": 78,
+    "upload_time": "2025-07-02T23:11:31.558360",
+    "source": "upload",
+    "session_id": "2e84fe64-8acb-4b6e-ad73-9341d98c71ed",
+    "metadata": {
+      "content_type": "text/plain",
+      "size": 78,
+      "id_format": "简短ID格式: u-上传文件, g-生成文件, t-临时文件"
+    }
+  },
+  "u-af7f5809": {
+    "file_id": "u-af7f5809",
+    "file_name": "move_test_20250702_231158.txt",
+    "file_path": "/xuzhiyao/code/the_agent/data/uploads/u-af7f5809_move_test_20250702_231158.txt",
+    "original_path": "/xuzhiyao/code/the_agent/data/generated/move_test_20250702_231158.txt",
+    "file_type": "text",
+    "content_type": "text/plain",
+    "size": 78,
+    "upload_time": "2025-07-02T23:11:58.966589",
+    "source": "upload",
+    "session_id": "2e84fe64-8acb-4b6e-ad73-9341d98c71ed",
+    "metadata": {
+      "content_type": "text/plain",
+      "size": 78,
+      "id_format": "简短ID格式: u-上传文件, g-生成文件, t-临时文件"
+    }
+  },
+  "u-540e6ffb": {
+    "file_id": "u-540e6ffb",
+    "file_name": "test_isotope_data.csv",
+    "file_path": "/xuzhiyao/code/the_agent/data/uploads/u-540e6ffb_test_isotope_data.csv",
+    "original_path": "/xuzhiyao/code/the_agent/data/generated/test_isotope_data.csv",
+    "file_type": "spreadsheet",
+    "content_type": "text/csv",
+    "size": 75,
+    "upload_time": "2025-07-03T21:04:00.629257",
+    "source": "upload",
+    "session_id": "cc750929-5271-4882-901e-74240213d2cc",
+    "metadata": {
+      "category": "test_data",
+      "description": "测试用碳同位素数据文件",
+      "content_type": "text/csv",
+      "size": 75,
+      "id_format": "简短ID格式: u-上传文件, g-生成文件, t-临时文件"
+    }
+  },
+  "u-dac497fb": {
+    "file_id": "u-dac497fb",
+    "file_name": "test_isotope_data.csv",
+    "file_path": "/xuzhiyao/code/the_agent/data/uploads/u-dac497fb_test_isotope_data.csv",
+    "original_path": "/xuzhiyao/code/the_agent/data/generated/test_isotope_data.csv",
+    "file_type": "spreadsheet",
+    "content_type": "text/csv",
+    "size": 75,
+    "upload_time": "2025-07-03T21:06:13.259361",
+    "source": "upload",
+    "session_id": "f076efdf-1c3b-4287-a4af-fb783f39fa86",
+    "metadata": {
+      "category": "test_data",
+      "description": "测试用碳同位素数据文件",
+      "content_type": "text/csv",
+      "size": 75,
+      "id_format": "简短ID格式: u-上传文件, g-生成文件, t-临时文件"
+    }
+  }
+}
